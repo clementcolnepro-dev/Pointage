@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pointage">
+  <title>Pointage</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="view" aria-live="polite"></main>
+
+  <nav class="tabs" id="tabs">
+    <a href="#today"    data-tab="today"><span class="ico">⏱</span>Aujourd'hui</a>
+    <a href="#history"  data-tab="history"><span class="ico">☰</span>Historique</a>
+    <a href="#week"     data-tab="week"><span class="ico">▦</span>Semaine</a>
+    <a href="#cumul"    data-tab="cumul"><span class="ico">Σ</span>Cumul</a>
+    <a href="#settings" data-tab="settings"><span class="ico">⚙</span>Réglages</a>
+  </nav>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <dialog id="punchDialog">
+    <form method="dialog" id="punchForm">
+      <h2 id="punchTitle">Ajouter un pointage</h2>
+      <label>Date <input type="date" name="date" required></label>
+      <label>Heure <input type="time" name="time" required></label>
+      <label>Type
+        <select name="type">
+          <option value="in">Début</option>
+          <option value="out">Fin</option>
+        </select>
+      </label>
+      <p class="hint">Fin après minuit : mettre la date du lendemain.</p>
+      <div class="row">
+        <button type="button" class="btn danger" id="punchDelete">Supprimer</button>
+        <span class="grow"></span>
+        <button type="button" class="btn ghost" id="punchCancel">Annuler</button>
+        <button type="submit" class="btn primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
